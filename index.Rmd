@@ -60,6 +60,12 @@ htmltools::includeCSS("https://raw.githubusercontent.com/malcolmbarrett/kakashi/
 
 ---
 
+class: inverse, center, middle
+
+# **Why should I use the here package when I'm already using projects?**
+
+---
+
 ```{r projdir, eval=FALSE}
 here_here
 |--data
@@ -74,7 +80,7 @@ here_here
 |--here_here.Rproj #<<
 ```
 
-Example Project: https://github.com/malcolmbarrett/here_here
+.large[Example Project: https://github.com/malcolmbarrett/here_here]
 
 ---
 
@@ -92,7 +98,7 @@ here_here
 |--here_here.Rproj
 ```
 
-Example Project: https://github.com/malcolmbarrett/here_here
+.large[Example Project: https://github.com/malcolmbarrett/here_here]
 
 ---
 
