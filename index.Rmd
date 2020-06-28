@@ -1,0 +1,157 @@
+---
+title: "Why should I use the here package when I'm already using projects?"
+subtitle: "Blog post: [https://bit.ly/whyherepkg](https://bit.ly/whyherepkg)"
+author: "Malcolm Barrett"
+output:
+  xaringan::moon_reader:
+    css: null
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+htmltools::includeCSS("https://raw.githubusercontent.com/malcolmbarrett/kakashi/master/kakashi.css")
+```
+
+# A Song of Fire and Workflows
+
+--
+.large[
+> If the first line of your R script is
+> 
+> `setwd("C:\Users\jenny\path\that\only\I\have")`
+> 
+> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+]
+--
+</br>
+.large[
+> If the first line of your R script is
+> 
+> `rm(list = ls())`
+> 
+> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+]
+
+---
+
+# Only you can preventive computer fires
+
+## Use RStudio projects. 
+## Use here() from the here package to write file paths
+
+---
+
+# ~~Only you can preventive computer fires~~
+
+## **Use RStudio projects.**
+## ~~Use here() from the here package to write file paths~~
+
+---
+
+# ~~Only you can preventive computer fires~~
+
+## ~~Use RStudio projects.~~
+## **Use here() from the here package to write file paths**
+
+---
+
+```{r projdir, eval=FALSE}
+here_here
+|--data
+    |--mtcars.csv
+|--figs
+    |--mpg_hp.png
+|--rmd
+    |--01_read_data.Rmd
+    |--01_read_data.pdf
+|--scripts
+    |--read_data.R
+|--here_here.Rproj #<<
+```
+
+Example Project: https://github.com/malcolmbarrett/here_here
+
+---
+
+```{r projdir2, eval=FALSE}
+here_here
+|--data #<<
+    |--mtcars.csv
+|--figs #<<
+    |--mpg_hp.png
+|--rmd #<<
+    |--01_read_data.Rmd
+    |--01_read_data.pdf
+|--scripts #<<
+    |--read_data.R
+|--here_here.Rproj
+```
+
+Example Project: https://github.com/malcolmbarrett/here_here
+
+---
+
+class: inverse, center, middle
+
+# **here works from the project root up**
+
+---
+
+## In `rmd/01_read_data.Rmd`:
+
+```{r fail, eval = FALSE}
+library(tidyverse)
+read_csv("data/mtcars.csv")
+```
+
+--
+
+```{r fail_results, eval=FALSE} 
+## Error: 'data/mtcars.csv' does not exist in current working directory
+```
+
+---
+
+```{r herehere, eval = FALSE}
+library(here)
+read_csv(here("data", "mtcars.csv"))
+```
+
+--
+
+```{r herehere_results, echo = FALSE}
+tibble::as_tibble(mtcars)
+```
+
+---
+
+class: inverse, center, middle
+
+# **here bottles up several best practices**
+
+---
+
+class: inverse
+
+1. Use RStudio Projects
+2. 🔥Avoid `setwd("/absolute/paths")` and `rm(list = ls())`🔥
+3. Use `here::here()` to work from the project up
+
+---
+
+class: inverse, center, middle
+
+![](https://media.giphy.com/media/3oz8xIsloV7zOmt81G/giphy.gif)
+
+### `r icon::fa("github")` [malcolmbarrett](https://github.com/malcolmbarrett/)
+### `r icon::fa("twitter")` [@malco_barrett](https://twitter.com/malco_barrett)
+### `r icon::fa("link")` [malco.io](https://malco.io)
+
+Blog post: [https://bit.ly/whyherepkg](https://bit.ly/whyherepkg)
+
+Slides created via the R package [xaringan](https://github.com/yihui/xaringan).
